@@ -1,0 +1,38 @@
+# File
+  Size:
+      Empty.			          [single] [property emptyfile]
+      Not empty.
+  Number of String in the file:
+      None.			            [single] [if !emptyfile] [property noOccurences]
+      One.				                [if !emptyfile]
+      Many.				                [if !emptyfile]
+  Number of String in one line:
+      One.				                [if !noOccurences && !emptyfile]
+      Many.			            [if !noOccurences && !emptyfile]
+  Position of the String in the file:
+      First line.		        [single] [if !emptyfile]
+      Last line.		        [single] [if !emptyfile]
+      Any.				                  [if !emptyfile]
+
+# String
+  Length of the String:
+      Zero.			          [single] [property zerovalue]
+      One.			            [single]
+      More than one.            [property Stringlengthgt1]			
+  Presence of enclosing quotes:
+      Not enclosed.			        [if !zerovalue]
+      Enclosed.
+      Incorrect.		      [error]
+  Presence of blanks:
+      None.
+      One.				              [if !zerovalue]
+      Many.				              [if !zerovalue && Stringlengthgt1]
+  Presence of quotes within the String:
+      None.
+      One.				              [if !zerovalue]
+      Many.			              [if !zerovalue && Stringlengthgt1]
+
+# Filename
+  Presence of a file corresponding to the name:
+      Not present.		    [error]
+      Present.
