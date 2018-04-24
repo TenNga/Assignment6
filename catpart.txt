@@ -2,35 +2,40 @@
   Size:
       Empty.			          [single] [property emptyfile]
       Not empty.
-  Number of String in the file:
+  Number of FromString in the file:
       None.			            [single] [if !emptyfile] [property noOccurences]
       One.				                [if !emptyfile]
       Many.				                [if !emptyfile]
-  Number of String in one line:
-      One.				                [if !noOccurences && !emptyfile]
-      Many.			            [if !noOccurences && !emptyfile]
-  Position of the String in the file:
-      First line.		        [single] [if !emptyfile]
-      Last line.		        [single] [if !emptyfile]
-      Any.				                  [if !emptyfile]
+  Occurence of the FromString in the file:
+      First.		         [if !emptyfile && !noOccurences] [property firstOccurences]
+      Last.		            [if !emptyfile && !noOccurences] [property lastOccurences]
+      Any.				                  [if !emptyfile && !noOccurences]
 
-# String
-  Length of the String:
-      Zero.			          [single] [property zerovalue]
-      One.			            [single]
-      More than one.            [property Stringlengthgt1]			
-  Presence of enclosing quotes:
-      Not enclosed.			        [if !zerovalue]
-      Enclosed.
-      Incorrect.		      [error]
-  Presence of blanks:
-      None.
-      One.				              [if !zerovalue]
-      Many.				              [if !zerovalue && Stringlengthgt1]
-  Presence of quotes within the String:
-      None.
-      One.				              [if !zerovalue]
-      Many.			              [if !zerovalue && Stringlengthgt1]
+#OPT
+  -b:
+    Backup.         [single]
+    Not backup.    
+  -l:
+    Last.          [if lastOccurences]
+    Not last. 
+  -f:
+    first.         [if firstOccurences]
+    Not first.     
+  -i:
+    insensitive.  
+    sensitive.
+
+  # FromString
+  Length of the FromString:
+      Zero.			      [single]     [property FromZeroValue]
+      One.			          
+      More than one.            [property FromStringLengthgt1]			                 
+
+#ToString
+  Length of the ToString:
+      Zero.            [single]  [property ToZeroValue]
+      One.               
+      More than one.            
 
 # Filename
   Presence of a file corresponding to the name:
